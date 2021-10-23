@@ -12,7 +12,7 @@ jobs:
   setup-trace:
     runs-on: ubuntu-latest
     outputs:
-      TRACEPARENT: ${{ steps.setup-trace-step.TRACEPARENT}}
+      TRACEPARENT: ${{ steps.setup-trace-step.outputs.TRACEPARENT}}
     env:
       HONEYCOMB_DATASET: nx-test
       HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [setup-trace]
     env:
-      TRACEPARENT: ${{ needs.setup-trace.TRACEPARENT }}
+      TRACEPARENT: ${{ needs.setup-trace.outputs.TRACEPARENT }}
       HONEYCOMB_DATASET: nx-test
       HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
     steps:
@@ -56,7 +56,7 @@ jobs:
       matrix:
         agent: [1, 2, 3]
     env:
-      TRACEPARENT: ${{ needs.setup-trace.TRACEPARENT }}
+      TRACEPARENT: ${{ needs.setup-trace.outputs.TRACEPARENT }}
       HONEYCOMB_DATASET: nx-test
       HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
     steps:
