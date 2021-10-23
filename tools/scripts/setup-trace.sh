@@ -6,7 +6,7 @@ sudo apt install -y ./otel-cli_0.0.18_x86_64.deb
 otel-cli span \
   -n root-task \
   -s nx-cli \
-  --otlp-headers x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET \
+  --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
   --endpoint api.honeycomb.io:443 \
   --tp-print \
   --tp-export > tools/scripts/set-trace-env.sh

@@ -13,6 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       TRACEPARENT: ${{ steps.setup-trace-step.TRACEPARENT}}
+    env:
       HONEYCOMB_DATASET: nx-test
       HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
     steps:
@@ -28,6 +29,8 @@ jobs:
     needs: [setup-trace]
     env:
       TRACEPARENT: ${{ needs.setup-trace.TRACEPARENT }}
+      HONEYCOMB_DATASET: nx-test
+      HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
     steps:
       - uses: actions/checkout@v2
         name: Checkout [master]
@@ -54,6 +57,8 @@ jobs:
         agent: [1, 2, 3]
     env:
       TRACEPARENT: ${{ needs.setup-trace.TRACEPARENT }}
+      HONEYCOMB_DATASET: nx-test
+      HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
