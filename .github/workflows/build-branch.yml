@@ -22,7 +22,8 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
-          cache: 'yarn'
+          cache: 'npm'
+      - run: npm install
       - run: npx nx-cloud start-ci-run
       - run: npx nx affected --target=build
       - run: npx nx affected --target=test
@@ -39,6 +40,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
-          cache: 'yarn'
+          cache: 'npm'
+      - run: npm install
       - name: Start Nx Agent ${{ matrix.agent }}
         run: npx nx-cloud start-agent
