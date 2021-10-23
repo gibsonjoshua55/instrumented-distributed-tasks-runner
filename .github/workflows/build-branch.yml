@@ -47,15 +47,15 @@ jobs:
       - run: npx nx-cloud start-ci-run
       - run: |
           otel-cli exec \
-            -n build-task \
-            -s nx-cli \
+            -n nx-cli \
+            -s build-task \
             --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
             --endpoint api.honeycomb.io:443 \
             "npx nx run-many --target=build --all"
       - run: |
           otel-cli exec \
-            -n test-task \
-            -s nx-cli \
+            -n nx-cli \
+            -s test-task \
             --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
             --endpoint api.honeycomb.io:443 \
             "npx nx run-many --target=test --all"
