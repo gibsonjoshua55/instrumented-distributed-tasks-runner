@@ -38,7 +38,6 @@
     "@nrwl/nx-cloud": "^12.5.1",
     "@nrwl/tao": "13.0.2",
     "@nrwl/workspace": "13.0.2",
-    "@nxtension/opentelemetry-tasks-runner": "file:../nxtension/dist/packages/opentelemetry-tasks-runner/nxtension-opentelemetry-tasks-runner-0.0.1.tgz",
     "@types/jest": "27.0.2",
     "@types/node": "14.14.33",
     "@typescript-eslint/eslint-plugin": "~4.33.0",
