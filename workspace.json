@@ -2,6 +2,12 @@
   "version": 2,
   "projects": {
     "example-app-1": "apps/example-app-1",
-    "example-app-2": "apps/example-app-2"
+    "example-app-2": "apps/example-app-2",
+    "lib-1": "libs/lib-1",
+    "lib-2": "libs/lib-2",
+    "lib-3": "libs/lib-3",
+    "lib-4": "libs/lib-4",
+    "lib-5": "libs/lib-5",
+    "lib-6": "libs/lib-6"
   }
 }

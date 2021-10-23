@@ -14,7 +14,26 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@instrumented-distributed-tasks-runner/lib-1": [
+        "libs/lib-1/src/index.ts"
+      ],
+      "@instrumented-distributed-tasks-runner/lib-2": [
+        "libs/lib-2/src/index.ts"
+      ],
+      "@instrumented-distributed-tasks-runner/lib-3": [
+        "libs/lib-3/src/index.ts"
+      ],
+      "@instrumented-distributed-tasks-runner/lib-4": [
+        "libs/lib-4/src/index.ts"
+      ],
+      "@instrumented-distributed-tasks-runner/lib-5": [
+        "libs/lib-5/src/index.ts"
+      ],
+      "@instrumented-distributed-tasks-runner/lib-6": [
+        "libs/lib-6/src/index.ts"
+      ]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

@@ -11,20 +11,15 @@
     ".eslintrc.json": "*"
   },
   "tasksRunnerOptions": {
-    "otel": {
+    "default": {
       "runner": "@nxtension/opentelemetry-tasks-runner",
       "options": {
         "wrappedTasksRunner": "@nrwl/nx-cloud",
         "wrappedTasksRunnerOptions": {
           "cacheableOperations": ["build", "lint", "test", "e2e"],
           "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU="
-        }
-      }
-    },
-    "default": {
-      "runner": "@nrwl/nx-cloud",
-      "options": {
-        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        },
+        "setupFile": "./tools/honeycomb/export-honeycomb.js",
         "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU="
       }
     }

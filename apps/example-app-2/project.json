@@ -10,7 +10,8 @@
         "outputPath": "dist/apps/example-app-2",
         "main": "apps/example-app-2/src/main.ts",
         "tsConfig": "apps/example-app-2/tsconfig.app.json",
-        "assets": ["apps/example-app-2/src/assets"]
+        "assets": ["apps/example-app-2/src/assets"],
+        "buildLibsFromSource": false
       },
       "configurations": {
         "production": {

@@ -9,9 +9,25 @@ env:
   NX_CLOUD_DISTRIBUTED_EXECUTION: true
 
 jobs:
+  setup-trace:
+    runs-on: ubuntu-latest
+    outputs:
+      TRACEPARENT: ${{ steps.setup-trace-step.TRACEPARENT}}
+      HONEYCOMB_DATASET: nx-test
+      HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
+    steps:
+      - uses: actions/checkout@v2
+        name: Checkout [master]
+        with:
+          fetch-depth: 0
+      - name: Setup Trace
+        id: setup-trace-step
+        run: sh ./tools/scripts/setup-trace.sh
   master:
     runs-on: ubuntu-latest
-    if: ${{ github.event_name != 'pull_request' }}
+    needs: [setup-trace]
+    env:
+      TRACEPARENT: ${{ needs.setup-trace.TRACEPARENT }}
     steps:
       - uses: actions/checkout@v2
         name: Checkout [master]
@@ -25,16 +41,19 @@ jobs:
           cache: 'npm'
       - run: npm install
       - run: npx nx-cloud start-ci-run
-      - run: npx nx affected --target=build
-      - run: npx nx affected --target=test
+      - run: npx nx run-many --target=build --all
+      - run: npx nx run-many --target=test --all
       - run: npx nx-cloud stop-all-agents
   agents:
+    needs: [setup-trace]
     runs-on: ubuntu-latest
-    name: Agent 1
+    name: Agent
     timeout-minutes: 60
     strategy:
       matrix:
         agent: [1, 2, 3]
+    env:
+      TRACEPARENT: ${{ needs.setup-trace.TRACEPARENT }}
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
