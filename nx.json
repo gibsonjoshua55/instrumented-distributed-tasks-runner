@@ -11,15 +11,21 @@
     ".eslintrc.json": "*"
   },
   "tasksRunnerOptions": {
-    "default": {
-      "runner": "@nrwl/workspace/tasks-runners/default",
+    "otel": {
+      "runner": "@nxtension/opentelemetry-tasks-runner",
       "options": {
-        "cacheableOperations": [
-          "build",
-          "lint",
-          "test",
-          "e2e"
-        ]
+        "wrappedTasksRunner": "@nrwl/nx-cloud",
+        "wrappedTasksRunnerOptions": {
+          "cacheableOperations": ["build", "lint", "test", "e2e"],
+          "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU="
+        }
+      }
+    },
+    "default": {
+      "runner": "@nrwl/nx-cloud",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"],
+        "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU="
       }
     }
   },
@@ -31,5 +37,8 @@
       }
     ]
   },
-  "projects": {}
+  "cli": {
+    "defaultCollection": "@nrwl/node"
+  },
+  "defaultProject": "example-app-1"
 }

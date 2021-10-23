@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "projects": {},
-  "cli": {
-    "defaultCollection": "@nrwl/workspace"
+  "projects": {
+    "example-app-1": "apps/example-app-1",
+    "example-app-2": "apps/example-app-2"
   }
 }
