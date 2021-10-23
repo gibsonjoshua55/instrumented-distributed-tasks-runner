@@ -43,9 +43,22 @@ jobs:
           node-version: '14'
           cache: 'npm'
       - run: npm install
+      - run: sh tools/scripts/install-otel-cli.sh
       - run: npx nx-cloud start-ci-run
-      - run: npx nx run-many --target=build --all
-      - run: npx nx run-many --target=test --all
+      - run: |
+          otel-cli exec \
+            -n build-task \
+            -s nx-cli \
+            --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
+            --endpoint api.honeycomb.io:443 \
+            "npx nx run-many --target=build --all"
+      - run: |
+          otel-cli exec \
+            -n test-task \
+            -s nx-cli \
+            --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
+            --endpoint api.honeycomb.io:443 \
+            "npx nx run-many --target=test --all"
       - run: npx nx-cloud stop-all-agents
   agents:
     needs: [setup-trace]
