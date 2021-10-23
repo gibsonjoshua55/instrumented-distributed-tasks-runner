@@ -3,6 +3,7 @@ wget --no-check-certificate https://github.com/equinix-labs/otel-cli/releases/do
 sudo apt install -y ./otel-cli_0.0.18_x86_64.deb
 
 # create the trace in honeycomb
+echo "Creating a span"
 otel-cli span \
   -n root-task \
   -s nx-cli \
@@ -14,5 +15,7 @@ otel-cli span \
 # set the context to the TRACEPARENT env
 . tools/scripts/set-trace-env.sh
 
+
 # set the TRACEPARENT as an output for use in github actions
-echo '::set-output name=TRACEPARENT::$TRACEPARENT'
+echo "Setting TRACEPARENT $TRACEPARENT"
+echo "::set-output name=TRACEPARENT::$TRACEPARENT"
