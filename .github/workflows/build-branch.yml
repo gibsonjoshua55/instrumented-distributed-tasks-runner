@@ -50,15 +50,9 @@ jobs:
             -s build-task \
             --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
             --endpoint api.honeycomb.io:443 \
-            "npx nx run-many --target=build --all"
-      - run: |
-          otel-cli exec \
-            -n nx-cli \
-            -s test-task \
-            --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
-            --endpoint api.honeycomb.io:443 \
-            "npx nx run-many --target=test --all"
+            "npx nx run-many --target=build --all --max-parallel=3"
       - run: npx nx-cloud stop-all-agents
+        if: always()
   agents:
     needs: [setup-trace]
     runs-on: ubuntu-latest
