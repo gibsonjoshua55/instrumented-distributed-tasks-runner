@@ -1,5 +1,5 @@
-// import { lib as lib6 } from '@instrumented-distributed-tasks-runner/common/lib-6';
-// lib6();
+import { lib as lib6 } from '@instrumented-distributed-tasks-runner/common/lib-6';
+lib6();
 
 export * as fns from './functions';
 export * as helpers from './helpers';
