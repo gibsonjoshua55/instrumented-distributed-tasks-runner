@@ -2,7 +2,7 @@ name: CI
 on:
   push:
     branches:
-      - master
+      - feat/distributed-build
   pull_request:
 
 env:
@@ -18,13 +18,10 @@ jobs:
       HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
     steps:
       - uses: actions/checkout@v2
-        name: Checkout [master]
-        with:
-          fetch-depth: 0
       - name: Setup Trace
         id: setup-trace-step
         run: sh ./tools/scripts/setup-trace.sh
-  master:
+  task-scheduler:
     runs-on: ubuntu-latest
     needs: [setup-trace]
     env:
@@ -33,11 +30,13 @@ jobs:
       HONEYCOMB_WRITEKEY: ${{ secrets.HONEYCOMB_WRITEKEY }}
     steps:
       - uses: actions/checkout@v2
-        name: Checkout [master]
+        name: Checkout branch
         with:
           fetch-depth: 0
       - name: Derive appropriate SHAs for base and head for `nx affected` commands
         uses: nrwl/nx-set-shas@v2
+        with:
+          main-branch-name: 'feat/distributed-build'
       - uses: actions/setup-node@v1
         with:
           node-version: '14'
