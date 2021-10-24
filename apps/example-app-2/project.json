@@ -4,28 +4,23 @@
   "projectType": "application",
   "targets": {
     "build": {
-      "executor": "@nrwl/node:build",
+      "executor": "@nrwl/node:package",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/example-app-2",
-        "main": "apps/example-app-2/src/main.ts",
         "tsConfig": "apps/example-app-2/tsconfig.app.json",
-        "assets": ["apps/example-app-2/src/assets"]
+        "packageJson": "apps/example-app-2/package.json",
+        "main": "apps/example-app-2/src/main.ts",
+        "assets": ["apps/example-app-2/src/assets"],
+        "sourceMap": false,
+        "buildLibsFromSource": false
       },
-      "configurations": {
-        "production": {
-          "optimization": true,
-          "extractLicenses": true,
-          "inspect": false,
-          "fileReplacements": [
-            {
-              "replace": "apps/example-app-2/src/environments/environment.ts",
-              "with": "apps/example-app-2/src/environments/environment.prod.ts"
-            }
-          ]
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "dependencies"
         }
-      },
-      "dependsOn": []
+      ]
     },
     "serve": {
       "executor": "@nrwl/node:execute",
