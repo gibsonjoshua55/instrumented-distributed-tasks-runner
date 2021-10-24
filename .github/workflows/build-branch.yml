@@ -50,7 +50,7 @@ jobs:
             -s build-task \
             --otlp-headers "x-honeycomb-team=$HONEYCOMB_WRITEKEY,x-honeycomb-dataset=$HONEYCOMB_DATASET" \
             --endpoint api.honeycomb.io:443 \
-            "npx nx run-many --target=build --all --max-parallel=3"
+            "npx nx run-many --target=build --all --parallel"
       - run: npx nx-cloud stop-all-agents
         if: always()
   agents:
