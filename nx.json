@@ -14,7 +14,7 @@
     "default": {
       "runner": "@nxtension/opentelemetry-tasks-runner",
       "options": {
-        "wrappedTasksRunner": "@nrwl/nx-cloud",
+        "wrappedTasksRunner": "@nrwl/workspace/tasks-runners/default",
         "wrappedTasksRunnerOptions": {
           "cacheableOperations": ["build", "lint", "test", "e2e"],
           "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU="

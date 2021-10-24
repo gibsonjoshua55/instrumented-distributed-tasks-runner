@@ -1,0 +1,34 @@
+{
+  "root": "libs/common/lib-5",
+  "sourceRoot": "libs/common/lib-5/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/node:package",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/libs/common/lib-5",
+        "tsConfig": "libs/common/lib-5/tsconfig.lib.json",
+        "packageJson": "libs/common/lib-5/package.json",
+        "main": "libs/common/lib-5/src/index.ts",
+        "assets": ["libs/common/lib-5/*.md"]
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/common/lib-5/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/common/lib-5"],
+      "options": {
+        "jestConfig": "libs/common/lib-5/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

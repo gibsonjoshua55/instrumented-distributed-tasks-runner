@@ -15,6 +15,12 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@instrumented-distributed-tasks-runner/common/lib-5": [
+        "libs/common/lib-5/src/index.ts"
+      ],
+      "@instrumented-distributed-tasks-runner/common/lib-6": [
+        "libs/common/lib-6/src/index.ts"
+      ],
       "@instrumented-distributed-tasks-runner/lib-1": [
         "libs/lib-1/src/index.ts"
       ],
@@ -26,12 +32,6 @@
       ],
       "@instrumented-distributed-tasks-runner/lib-4": [
         "libs/lib-4/src/index.ts"
-      ],
-      "@instrumented-distributed-tasks-runner/lib-5": [
-        "libs/lib-5/src/index.ts"
-      ],
-      "@instrumented-distributed-tasks-runner/lib-6": [
-        "libs/lib-6/src/index.ts"
       ]
     }
   },
