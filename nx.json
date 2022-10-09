@@ -12,15 +12,22 @@
   },
   "tasksRunnerOptions": {
     "default": {
-      "runner": "@nxtension/opentelemetry-tasks-runner",
+      "runner": "@nxpansion/opentelemetry-tasks-runner",
       "options": {
         "wrappedTasksRunner": "@nrwl/nx-cloud",
         "wrappedTasksRunnerOptions": {
-          "cacheableOperations": ["build", "lint", "test", "e2e"],
+          "cacheableOperations": [
+            "build",
+            "lint",
+            "test",
+            "e2e"
+          ],
           "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU="
         },
         "setupFile": "./tools/honeycomb/export-honeycomb.js",
-        "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU="
+        "accessToken": "MWJjZTdkMjAtOTgwNy00YjE4LTg1OGUtZTgxNzA2ZDVhZTc0fHJlYWQtd3JpdGU=",
+        "isLegacyTasksRunner": true,
+        "parallel": 1
       }
     }
   },
